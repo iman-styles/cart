@@ -1,0 +1,26 @@
+.im-cart {
+  background: $purple-light;
+  color: #fff;
+  float: right;
+  font-family: $font-family-roboto;
+  padding: 20px;
+  width: 180px;
+
+  &.is-fixed {
+    left: 50%;
+    margin-left: 260px;
+    top: 60px;
+  }
+
+  .selection {
+    @include improve-text-rendering;
+    background: darken($purple-light, 8);
+    border-radius: 2px;
+    border: 1px solid #342C77;
+    display: block;
+    font-weight: 600;
+    line-height: 27px;
+    min-height: 29px;
+    padding: 0 10px;
+  }
+}
