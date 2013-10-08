@@ -6,5 +6,8 @@
   "styles": [
     "index.scss"
   ],
+  "files": [
+    "assets/loader.GIF"
+  ],
   "repo": "https://raw.github.com/iman-styles/cart"
 }

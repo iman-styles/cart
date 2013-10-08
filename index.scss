@@ -1,3 +1,7 @@
+@function cart-image-url($path) {
+  @return url("../components/iman-styles-cart/assets/#{$path}");
+}
+
 .im-cart {
   background: rgba($purple-light, 0.9);
   border-radius: 2px;
@@ -33,16 +37,37 @@
   left: 40px;
 }
 
+// price and frequency
 .im-cart__price {
   border-bottom: 2px solid darken($purple-light, 8);
+  min-height: 34px;
+}
+
+.is-loading.im-cart__price {
+  background: cart-image-url('loader.GIF') top left no-repeat;
+
+  .im-cart__price-value,
+  .im-cart__frequency {
+    display: none;
+  }
+}
+
+.im-cart__frequency {
+  display: inline-block;
+}
+
+
+// List of people covered
+.im-cart__list {
+  overflow: hidden;
 }
 
 .im-cart__item {
   background: darken($purple-light, 8);
-  margin-top: 3px;
-  padding: 7px 5px 7px 31px; // 5px + 21px icon + 5px = 31px
-  position: relative;
   line-height: 21px !important;
+  margin-top: 3px;
+  padding: 7px 5px 7px 40px; // 5px + 21px icon + 5px = 31px
+  position: relative;
 }
 
 .im-cart__item:first-child {
@@ -52,9 +77,26 @@
 .im-cart__item i {
   position: absolute;
   top: 7px;
-  left: 5px;
+  left: 10px;
 }
 
 .im-cart__item__label {
   display: inline-block;
+}
+
+// animation classes
+@include keyframes('slide-in-right') {
+  to {
+    @include transform(translateX(0%));
+  }
+}
+
+@for $i from 2 through 12 {
+  $delay: 0.1s;
+  .im-cart__item--animate-#{$i} {
+    @include animation(slide-in-right ease 1s ($delay * $i) forwards);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
 }
